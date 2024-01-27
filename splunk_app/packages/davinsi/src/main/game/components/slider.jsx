@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import ControlGroup from '@splunk/react-ui/ControlGroup';
 import Slider from '@splunk/react-ui/Slider';
 import Number from '@splunk/react-ui/Number';
-import { ThemeConsumer } from 'styled-components';
+import PropTypes from 'prop-types';
 
 class Slidder extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: 300 };
+        this.state = {
+            value: props.value,
+            max: props.max,
+            min: props.min,
+            step: props.step,
+            label: props.label,
+        };
     }
 
     handleSliderChange = (e, { value }) => {
@@ -22,13 +28,12 @@ class Slidder extends Component {
         return (
 
            
-            <ControlGroup label='Greg' labelWidth="3em" color='red' >
+            <ControlGroup label={this.state.label} labelWidth="3em" color='red' >
                
                 <Slider
-                    
-                    min={100}
-                    max={500}
-                    step={25}
+                    min={this.state.min}
+                    max={this.state.max}
+                    step={this.state.step}
                     onChange={this.handleSliderChange}
                     value={this.state.value}
                     color='primary'
@@ -36,9 +41,9 @@ class Slidder extends Component {
               
                 <Number
          
-                    min={100}
-                    max={500}
-                    step={25}
+                    min={this.state.min}
+                    max={this.state.max}
+                    step={this.state.step}
                     value={this.state.value}
                     onChange={this.handleNumberChange}
                     style={{ flexBasis: 40,  }}
@@ -49,5 +54,13 @@ class Slidder extends Component {
         );
     }
 }
+
+Slidder.propTypes = { 
+    max: PropTypes.number.isRequired,
+    min: PropTypes.number.isRequired,
+    step: PropTypes.number.isRequired,
+    value: PropTypes.number,
+    label: PropTypes.string.isRequired,
+};
 
 export default Slidder;
