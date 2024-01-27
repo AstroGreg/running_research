@@ -1,5 +1,5 @@
 import React from "react";
-import BarGraph from "./graphs/bar";
+import BarGraph from "./graphs/components/bar";
 
 
 const main = () => {

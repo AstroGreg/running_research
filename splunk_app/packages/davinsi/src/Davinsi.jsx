@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@splunk/react-ui/Button';
 
-import { StyledContainer, StyledGreeting, TailWindCss} from './DavinsiStyles';
+import { StyledContainer, StyledGreeting} from './DavinsiStyles';
 
 const propTypes = {
     name: PropTypes.string,

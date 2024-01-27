@@ -224,7 +224,6 @@ body {
     }
 }
 
-#splunk-button {
-    color: red !important;
-    opacity: 0.5 !important;
+.slider-track {
+    background-color: blue;
 }

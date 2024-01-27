@@ -5,34 +5,40 @@ import Heading from '@splunk/react-ui/Heading';
 import Slidder from "./components/slider";
 import ButtonGroup from '@splunk/react-ui/ButtonGroup';
 import Button from '@splunk/react-ui/Button';
-import { StyledContainer } from './styling/style';
+import { StyledContainer , StyledButton, StyledSliderContainer} from './styling/style';
 
 
 const main = () => {
 
-    return <StyledContainer>
+    return <>
 
         <Heading level={1}  style={{textAlign: "center"}}>
-                <p name="Heading 1"> Week 1 </p>
+                <p name="Heading 1"> Workout plan </p>
             </Heading>
-            <Slidder/>
-            <Slidder/>
-            <Slidder/>
-            <div style={{display: "flex", justifyContent: "center"}}>
-                <ButtonGroup>
-            <Button selected>Mon</Button>
-            <Button >Tue</Button>
-            <Button >WED</Button>
-            <Button>THU</Button>
-            <Button style={{color: "red"}}>FRI</Button>
-            <Button>SAT</Button>
-            <Button>SUN</Button>
+            <StyledContainer >
+                <Slidder/>
+                <Slidder/>
+                <Slidder/>
+            </StyledContainer >
+               <div style={{display: "flex" , justifyContent: "space-between" , alignItems: "center"}}>
+                <StyledButton >
+                  <ButtonGroup style={{borderBottom: "0px"}} >
+                    <Button  style={{ background:"white", borderColor:"#E5E7EB" ,  borderBottom: "0px"}}>Mon</Button>
+                    <Button  style={{ background:"white", borderColor:"#E5E7EB" ,  borderBottom: "0px"}}>Tue</Button>
+                    <Button  style={{ background:"white", borderColor:"#E5E7EB" ,  borderBottom: "0px"}}>Wed</Button>
+                    <Button  style={{ background:"white", borderColor:"#E5E7EB" ,  borderBottom: "0px"}}>Thu</Button>
+                    <Button  style={{ background:"white", borderColor:"#E5E7EB" ,  borderBottom: "0px"}}>Fri</Button>
+                    <Button  style={{ background:"white", borderColor:"#E5E7EB" ,  borderBottom: "0px"}}>Sat</Button>
+                    <Button  style={{ background:"white", borderColor:"#E5E7EB" ,  borderBottom: "0px"}}>Sun</Button>
+                  </ButtonGroup>
+                </StyledButton>
             
-        </ButtonGroup>
-        <Button label="submit" appearance="secondary" />
-     
-            </div>
-            </StyledContainer>;
+                    <div>
+                      <Button label="submit" appearance="secondary" style={{  borderRadius: "5px", border: "none", color: "white", background: "#1e3a8a", marginLeft: "0.5em", marginTop: "0.2em", marginBottom: "0.2em"}} />
+                    </div>
+                </div>
+
+                </>
 }
 
 
