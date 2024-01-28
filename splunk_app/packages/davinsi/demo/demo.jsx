@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { SplunkThemeProvider, variables } from '@splunk/themes';
+import { SplunkThemeProvider,  variables } from '@splunk/themes';
 import { getUserTheme, getThemeOptions } from '@splunk/splunk-utils/themes';
 import { createGlobalStyle } from 'styled-components';
 
 // import Davinsi from '../src/Davinsi';
-import Main from '../src/main/game';
+import Main from '../src/main/graphs';
 import "./main.css";
 
 const GlobalStyles = createGlobalStyle`

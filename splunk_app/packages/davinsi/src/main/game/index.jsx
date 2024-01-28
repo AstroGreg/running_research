@@ -36,7 +36,7 @@ const Main = () => {
 
     return <>
             <Heading level={1} style={{textAlign: "center"}}>
-                <p name="Heading 1"> Workout plan {selectedDay}</p>
+                <p name="Heading 1"> Workout plan</p>
             </Heading>
             <Metrics metric={metrics[selectedDay]} day={selectedDay} onChange={UpdateMetric} />
             <div style={{display: "flex" , justifyContent: "space-between" , alignItems: "center"}}>

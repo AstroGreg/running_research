@@ -1,32 +1,43 @@
 import React from 'react';
 import Bar from '@splunk/visualizations/Bar';
-import PropTypes from 'prop-types';
 
-const propTypes = {
-    data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
-};
-
-const BarGraph = ({data = [
-    ['foo', 'bar', 'foobar'],
-    ['1556', '8904', '2327'],
-]})  => {
-    return (
+const bar = () => (
+    <div style={{width: "50em"}}>
     <Bar
         options={{}}
         dataSources={{
             primary: {
                 requestParams: { offset: 0, count: 20 },
                 data: {
-                    fields: [{ name: 'component', groupby_rank: '0' }, { name: 'admin' }],
-                    columns: data,
+                    fields: [
+                        {
+                            name: 'sourcetype',
+                        },
+                        {
+                            name: 'admin',
+                        },
+                        {
+                            name: 'user',
+                        },
+                    ],
+                    columns: [
+                        [
+                            '400m',
+                            '800m',
+                            '1000m',
+                            '1500m',
+                            '2000m',
+                            '3000m',
+                            '5000m',
+                        ],
+                        ['50', '110', '150', '220', '500', '600', "900"],
+                        ['49', '105', '140', '210', '490', '590', "870"],                    ],
                 },
                 meta: { totalCount: 20 },
             },
         }}
     />
-)};
+    </div>
+);
 
-
-BarGraph.propTypes = propTypes;
-
-export default BarGraph;
+export default bar;

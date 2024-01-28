@@ -1,19 +1,15 @@
 import React from "react";
 import propTypes from "prop-types";
 import ButtonGroup from '@splunk/react-ui/ButtonGroup';
-import Button from '@splunk/react-ui/Button';
-import { customButtonStyle,  } from '../styling/customstyle.js';
 import { StyledButton} from '../styling/style';
 import WeekButton from "./WeekButton";
-import { on } from "events";
 
 
 const WeekDays = ({onClick, currentDay}) => {
-    console.log(onClick);
     return <>
          <StyledButton >
                   <ButtonGroup style={{borderBottom: "0px"}} >
-                  <WeekButton style={{borderLeftWidth: "1px"}} label="Mon" day={0} currentDay={currentDay} onClick={onClick} />
+                        <WeekButton style={{borderLeftWidth: "1px"}} label="Mon" day={0} currentDay={currentDay} onClick={onClick} />
                         <WeekButton label="Tue" day={1} currentDay={currentDay} onClick={onClick} />
                         <WeekButton label="Wed" day={2} currentDay={currentDay} onClick={onClick} />
                         <WeekButton label="Thu" day={3} currentDay={currentDay} onClick={onClick} />
