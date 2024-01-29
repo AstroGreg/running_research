@@ -14,12 +14,7 @@ const StyledContainer = styled.div `
     border-style: solid;
     border-color: rgb(229 231 235);
   `;
-const flexContainer = styled.div `
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    `;
+
 const StyledGreeting = styled.div `
     font-weight: bold;
     color: ${variables.brandColor};
@@ -39,4 +34,4 @@ const StyledSliderContainer = styled.div `
 
 
 
-export { StyledContainer, StyledGreeting, StyledButton, StyledSliderContainer, flexContainer };
+export { StyledContainer, StyledGreeting, StyledButton, StyledSliderContainer };

@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 import ButtonGroup from '@splunk/react-ui/ButtonGroup';
-import { StyledButton} from '../styling/style';
+import { StyledButton} from '../../styling/style';
 import WeekButton from "./WeekButton";
 
 

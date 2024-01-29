@@ -1,43 +1,27 @@
 import React from 'react';
+import propStyles from 'prop-types';
 import Bar from '@splunk/visualizations/Bar';
 
-const bar = () => (
-    <div style={{width: "50em"}}>
+const bar = ({data, options}) => {
+    console.log(data);
+    return(
+    <div>
     <Bar
-        options={{}}
+        options={{options}}
         dataSources={{
             primary: {
                 requestParams: { offset: 0, count: 20 },
-                data: {
-                    fields: [
-                        {
-                            name: 'sourcetype',
-                        },
-                        {
-                            name: 'admin',
-                        },
-                        {
-                            name: 'user',
-                        },
-                    ],
-                    columns: [
-                        [
-                            '400m',
-                            '800m',
-                            '1000m',
-                            '1500m',
-                            '2000m',
-                            '3000m',
-                            '5000m',
-                        ],
-                        ['50', '110', '150', '220', '500', '600', "900"],
-                        ['49', '105', '140', '210', '490', '590', "870"],                    ],
-                },
+                data,
                 meta: { totalCount: 20 },
             },
         }}
     />
     </div>
-);
+)};
+
+bar.propTypes = {
+    data: propStyles.object,
+    options: propStyles.object,
+};
 
 export default bar;

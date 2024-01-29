@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Button from '@splunk/react-ui/Button';
-import { customButtonStyle } from '../styling/customstyle';
+import { customButtonStyle } from '../../styling/customstyle';
 
 const WeekButton = ({style, currentDay, onClick, label, day}) => {
     const clickDay = () => {

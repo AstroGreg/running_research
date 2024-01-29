@@ -6,7 +6,7 @@ import { getUserTheme, getThemeOptions } from '@splunk/splunk-utils/themes';
 import { createGlobalStyle } from 'styled-components';
 
 // import Davinsi from '../src/Davinsi';
-import Main from '../src/main/graphs';
+import Main from '../src/main';
 import "./main.css";
 
 const GlobalStyles = createGlobalStyle`
@@ -25,7 +25,6 @@ getUserTheme()
             <SplunkThemeProvider {...splunkTheme}>
             <GlobalStyles />
                    <Main/>
-
             </SplunkThemeProvider>,
             containerEl
         );

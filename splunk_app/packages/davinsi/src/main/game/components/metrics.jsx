@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "@splunk/react-ui/Button";
 import propTypes from "prop-types";
 import Slidder from "./slider";
-import { StyledContainer } from '../styling/style';
+import { StyledContainer } from '../../styling/style';
 
 const Metrics = ({ metric, onChange }) => {
 
