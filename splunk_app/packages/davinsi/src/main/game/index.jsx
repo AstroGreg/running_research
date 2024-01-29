@@ -10,10 +10,7 @@ import WeekDays from "./components/weekDays";
 const Main = ({onSubmited, metrics, setMetrics}) => {
     const [selectedDay, setSelectedDay] = useState(0);
 
-    const onSubmit = () => {
-        onSubmited(metrics);
-    }
-  
+
     const UpdateMetric = (metric) => {
         /* check if day exist and then check if metric type exists */
 
@@ -29,7 +26,7 @@ const Main = ({onSubmited, metrics, setMetrics}) => {
             newMetrics[selectedDay] = newMetric;
         }
         setMetrics(newMetrics);
-        console.log(metrics);
+
      
     }
 
@@ -45,7 +42,7 @@ const Main = ({onSubmited, metrics, setMetrics}) => {
             <div style={{display: "flex" , justifyContent: "space-between" , alignItems: "center"}}>
               <WeekDays currentDay={selectedDay} onClick={UpdateDay}/>
                <div>
-                 <Button label="analyze" appearance="secondary" style={customButtonConfirm} onClick={onSubmit}/>
+                 <Button label="analyse" appearance="secondary" style={customButtonConfirm} onClick={onSubmited}/>
               </div>
            </div>
     </>
@@ -53,7 +50,7 @@ const Main = ({onSubmited, metrics, setMetrics}) => {
 
 Main.propTypes = {
     onSubmited: propTypes.func,
-    metrics: propTypes.object,
+    metrics: propTypes.array,
     setMetrics: propTypes.func,
 }
 

@@ -1,59 +1,45 @@
 import React , {useState} from "react";
 import Game from "./game";
 import Graph from "./graphs";
-import Column from "./graphs/components/column";
 
 
 const Main = () => {
     const [data, setData] = useState([]);
     const [metrics, setMetrics] = useState([{}]);
+    const [riskOfInjury, setRiskOfInjury] = useState("-");
     const onReset = () => {
+        console.log("reset");
         setData([]);
         setMetrics([{}]);
+        setRiskOfInjury("-");
     }
 
-    const onSubmited = (Submitted_metrics) => {
-        console.log(metrics);
-        
+    const onSubmited = () => {
+
         // get the sum of all the metrics exertion, gym and kilometers
-
-        const [exertion, gym, kilometers] = metrics.reduce((acc, curr) => {
-            return [acc[0] + curr.exertion, acc[1] + curr.gym, acc[2] + curr.kilometers];
+       
+        const [exertion, gym, kilometers, zeroDays] = metrics.reduce((acc, metric) => {
+            return [acc[0] + (metric.exertion ? metric.exertion : 0), acc[1] + (metric.gym ? metric.gym : 0), acc[2] + (metric.kilometers ? metric.kilometers : 0), acc[3] + (metric.kilometers === 0 && metric.exertion === 0 && metric.gym === 0 ? 1 : 0)];
         }
-        , [0, 0, 0]);
+        , [0, 0, 0, 0]);
+      
+        const restDays = (7 - metrics.length) + zeroDays;
+        const injury = (kilometers > 50 ? 1 : 0) + (gym > 1 ? 1 : 0) + (exertion/7 > 6 ? 1 : 0) + (restDays < 2 ? 1 : 0);
+        const injuryLabels = {0: "low", 1: "medium", 2: "high", 3: "very high", 4: "almost certain"};
 
-
-        const improvement = 1 + ((exertion/10 + gym/3 + kilometers/20) / 50);
-        console.log(improvement);
+        setRiskOfInjury(injuryLabels[injury]);
+        const I = 1 - ((exertion/10 + gym/3 + kilometers/20) / 1000);
         setData( {
-            fields: [
-                {
-                    name: 'Distances',
-                },
-                {
-                    name: 'improvement',
-                },
-                {
-                    name: 'current',
-                },
+            fields: [{  name: 'Distances', },{ name: 'current', }, { name: 'improvement', }
             ],
-            columns: [
-                [
-                    '400m',
-                    '800m',
-                    '1000m',
-                    '1500m',
-                    '2000m',
-                    '3000m',
-                    '5000m',
-                ],
-                ['50', '110', '150', '220', '500', '600', "900"],
-                [50*improvement, 110*improvement, 150*improvement, 220*improvement, 500*improvement, 600*improvement, 900*improvement ],   ],
+            columns: [[ "400", "800", "1000", "1500", "2000", "3000", "5000" ],
+                      ['50', '110', '150', '220', '500', '600', "900"],
+                      [50*I, 110*I, 150*I, 220*I, 500*I, 600*I, 900*I ],   ],
         })
     }
     return <div>
           <Game setMetrics={setMetrics} metrics={metrics} onSubmited={onSubmited} />
-          <Graph data={data} onReset={onReset}/>
+          <Graph data={data} riskOfInjury={riskOfInjury} onReset={onReset}/>
     </div>;
 }
 
